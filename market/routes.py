@@ -71,7 +71,7 @@ def login_page():
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(
-            attempted_user=form.password.data
+            attempted_password=form.password.data
         ):
             login_user(attempted_user)
             flash(f'Success! You are logged in as: {attempted_user.username}', category='success')
